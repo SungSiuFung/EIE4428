@@ -36,7 +36,7 @@ connection.socketURL = '/';
 
 connection.socketMessageEvent = 'scalable-media-broadcast-demo';
 
-// document.getElementById('broadcast-id').value = connection.userid;
+document.getElementById('broadcast-id').value = connection.userid;
 
 // user need to connect server, so that others can reach him.
 connection.connectSocket(function(socket) {
@@ -101,7 +101,6 @@ connection.connectSocket(function(socket) {
 });
 
 window.onbeforeunload = function() {
-    // Firefox is ugly.
     document.getElementById('open-or-join').disabled = false;
 };
 
@@ -152,29 +151,19 @@ connection.onstream = function(event) {
             }
 
             if (connection.DetectRTC.browser.name === 'Firefox') {
-                // Firefox is NOT supporting removeStream method
-                // that's why using alternative hack.
-                // NOTE: Firefox seems unable to replace-tracks of the remote-media-stream
-                // need to ask all deeper nodes to rejoin
                 connection.getAllParticipants().forEach(function(p) {
                     if (p + '' != event.userid + '') {
                         connection.replaceTrack(event.stream, p);
                     }
                 });
             }
-
-            // Firefox seems UN_ABLE to record remote MediaStream
-            // WebAudio solution merely records audio
-            // so recording is skipped for Firefox.
-            //  if (connection.DetectRTC.browser.name === 'Chrome') {
-            //      repeatedlyRecordStream(event.stream);
-            //  }
         });
     }
 
     // to keep room-id in cache
     localStorage.setItem(connection.socketMessageEvent, connection.sessionid);
 	console.log("checker2");
+    document.getElementById('startRecord').disabled = false;
 	console.log(event.stream.getTracks().getSettings());
 };
 
@@ -219,26 +208,25 @@ document.getElementById('open-or-join').onclick = function() {
     });
 };
 
-<!-- document.getElementById('startRecord').onclick = function(){ -->
+// document.getElementById('startRecord').onclick = function(){
 
-<!-- var broadcastId = document.getElementById('broadcast-id').value; -->
-<!-- // e.type == 'remote' || 'local'  -->
-    <!-- connection.streams[broadcastId].startRecording({  -->
-        <!-- video: true  -->
-    <!-- });  -->
+//     var broadcastId = document.getElementById('broadcast-id').value;
+//     // e.type == 'remote' || 'local'
+//     connection.streams[broadcastId].startRecording({
+//         video: true
+//     });
 
-    <!-- // record 10 sec audio/video  -->
-    <!-- var recordingInterval = 10 * 10000;  -->
+//     // record 10 sec audio/video
+//     var recordingInterval = 10 * 10000;
 
-    <!-- setTimeout(function () {  -->
-        <!-- connection.streams[broadcastId].stopRecording(function (blob) {  -->
-            <!-- var mediaElement = document.createElement('video');  -->
-            <!-- mediaElement.src = URL.createObjectURL(blob.video);  -->
-            <!-- document.documentElement.appendChild(h2);  -->
-        <!-- });  -->
-    <!-- }, recordingInterval)  -->
-
-<!-- }; -->
+//     setTimeout(function () {
+//         connection.streams[broadcastId].stopRecording(function (blob) { 
+//             var mediaElement = document.createElement('video');
+//             mediaElement.src = URL.createObjectURL(blob.video); 
+//             document.documentElement.appendChild(h2); 
+//         });
+//     }, recordingInterval)
+// };
 
 // document.getElementById('startRecord').onclick = function(){
 //    // console.log("test");

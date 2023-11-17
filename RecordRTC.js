@@ -1,53 +1,3 @@
-<!doctype html>
-<html>
-<style>
-    table, th, td {
-        border:0px;
-    }
-
-    .center {
-        text-align: center;
-    }
-</style>
-<head>
-    <title>EIE4428 MiniProject Remote Video Monitoring</title>
-</head>
-<body>
-    <table style="background-color:#000000; width:100%;">
-        <tr>
-            <td><h1><p style="color:white;">EIE4428 MiniProject Remote Video Monitoring</p></h1>
-            <h3><p style="color:white;">Tse Chun Hei    Sung Siu Fung</p></h3>
-            </td>
-        </tr>
-        <tr>
-        </tr>
-    </table>
-    <table style = "width:100%;border: 1px solid black;border-collapse: collapse;">
-        <tr style = "border: 1px solid black;border-collapse: collapse;">
-            <td class="center" style = "width:50%; border: 1px solid black; border-collapse: collapse;"><a href="index.html">Home</a></td>
-            <td class="center" style = "width:50%; border: 1px solid black; border-collapse: collapse;">Video Broadcasting</td>
-        </tr>
-    </table>
-    <table style = "width:100%;">
-        <tr>
-            <td class="center">
-                <input type="text" id="broadcast-id" value="EIE4428-Project" autocorrect=off autocapitalize=off size=20>
-                <button id="open-or-join">Open / Join Broadcast</button>
-            </td>
-        </tr>
-        <tr>
-            <td class="center"><video id="video-preview" controls loop></video></td>
-        </tr>
-    </table>
-<script src="https://muazkhan.com:9001/dist/RTCMultiConnection.min.js"></script>
-<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-<script src="https://muazkhan.com:9001/socket.io/socket.io.js"></script>
-<script src="https://www.webrtc-experiment.com/RecordRTC.js"></script>
-<script>
-// recording is disabled because it is resulting for browser-crash
-// if you enable below line, please also uncomment above "RecordRTC.js"
-
-
 var enableRecordings = true;
 
 var connection = new RTCMultiConnection();
@@ -251,8 +201,6 @@ document.getElementById('open-or-join').onclick = function() {
         oneway: true
     };
 	
-
-
     connection.getSocket(function(socket) {
         socket.emit('check-broadcast-presence', broadcastId, function(isBroadcastExists) {
             if (!isBroadcastExists) {
@@ -292,27 +240,27 @@ document.getElementById('open-or-join').onclick = function() {
 
 <!-- }; -->
 
-document.getElementById('startRecord').onclick = function(){
-   // console.log("test");
-    repeatedlyRecordStream(videoPreview.srcObject);
-}
+// document.getElementById('startRecord').onclick = function(){
+//    // console.log("test");
+//     repeatedlyRecordStream(videoPreview.srcObject);
+// }
 
-document.getElementById("stopRecord").addEventListener('click', stoprecord);
+// document.getElementById("stopRecord").addEventListener('click', stoprecord);
 
-function stoprecord(){
-   // console.log("test");
-   connection.currentRecorder.stopRecording();    
-   console.log("recorder" + connection.currentRecorder);
-   console.log("get blob " + connection.currentRecorder.getBlob());
+// function stoprecord(){
+//    // console.log("test");
+//    connection.currentRecorder.stopRecording();    
+//    console.log("recorder" + connection.currentRecorder);
+//    console.log("get blob " + connection.currentRecorder.getBlob());
 
-}
+// }
 
-document.getElementById('displayRecord').onclick = function(){
-    var mediaElement = document.createElement('video'); 
-    mediaElement.src = URL.createObjectURL(connection.currentRecorder.getBlob());   
-	mediaElement.play();
-	console.log(connection.currentRecorder.blob)
-}
+// document.getElementById('displayRecord').onclick = function(){
+//     var mediaElement = document.createElement('video'); 
+//     mediaElement.src = URL.createObjectURL(connection.currentRecorder.getBlob());   
+// 	mediaElement.play();
+// 	console.log(connection.currentRecorder.blob)
+// }
 
 connection.onstreamended = function() {};
 
@@ -408,9 +356,3 @@ connection.onNumberOfBroadcastViewersUpdated = function(event) {
 
     document.getElementById('broadcast-viewers-counter').innerHTML = 'Number of broadcast viewers: <b>' + event.numberOfBroadcastViewers + '</b>';
 };
-</script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  </body>
-</html>	

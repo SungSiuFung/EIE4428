@@ -38,6 +38,8 @@ connection.socketMessageEvent = 'scalable-media-broadcast-demo';
 
 document.getElementById('broadcast-id').value = connection.userid;
 
+document.getElementById('open-or-join').disabled = false;
+
 // user need to connect server, so that others can reach him.
 connection.connectSocket(function(socket) {
     socket.on('logs', function(log) {

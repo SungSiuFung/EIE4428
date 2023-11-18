@@ -1,105 +1,6 @@
 <!doctype html>
 <html>
-<style>
-    table, th, td {
-        border: 1px solid black;
-    }
-
-    .center {
-        text-align: center;
-    }
-
-    table.video {
-        width : 80%; 
-        height : 45%;
-        margin-left:auto;
-        margin-right:auto;
-        border: 1px solid black;
-    }
-
-    td.btn {
-        text-align: center;
-        vertical-align: center;
-    }
-
-    .row {
-        display: flex;
-        margin-left:-5px;
-        margin-right:-5px;
-    }
-      
-    .vidcolumn {
-        flex: 80%;
-    }
-
-    .panelcolumn {
-        flex: 20%;
-    }
-
-    .input {
-        font-size:24pt;
-    }
-
-    button.function {
-        width: 100%;
-        height: 100px;
-    }
-
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-    }
-      
-    .switch input { 
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-      
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-      
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-      
-    input:checked + .slider {
-        background-color: #2196F3;
-    }
-      
-    input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-      
-    input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
-
-    body {
-        font-family: 'Comic Sans MS', cursive;
-    }
-</style>
+    <link rel="stylesheet" href="styles.css">
 <head>
     <title>EIE4428 MiniProject Remote Video Monitoring</title>
 </head>
@@ -132,7 +33,7 @@
                 </tr>
                 <tr>
                     <td class="center" colspan="2">
-                        <button id="open-or-join" class="function" style="font-size: 24px;">Auto Open / Join Broadcast</button>
+                        <button id="open-or-join" class="function" style="font-size: 24px;" disabled>Auto Open / Join Broadcast</button>
                     </td>
                 </tr>
                 <tr>
@@ -165,8 +66,10 @@
         </tr>
         <tr>
             <td>
-                <canvas id="canvas"></canvas>
-                <canvas id="canvasFinal"></canvas>
+                <div class="wrapper">
+                    <canvas id="canvas" style = "width:100%;" width="0" height="0" class="canvasBottom"></canvas>
+                    <canvas id="canvasFinal" style = "width:100%;" width="0" height="0" class="canvasTop"></canvas>
+                </div>
             </td>
         </tr>
     </table>
@@ -174,8 +77,8 @@
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="https://muazkhan.com:9001/socket.io/socket.io.js"></script>
     <script src="https://www.webrtc-experiment.com/RecordRTC.js"></script>
+    <script src="MotionDetector.js"></script>
     <script src="RecordRTC.js"></script>
     <script src="RecordVideo.js"></script>
-    <script src="MotionDetector.js"></script>
 </body>
 </html>	

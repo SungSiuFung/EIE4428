@@ -59,6 +59,17 @@
                         </label>
                     </td>
                 </tr>
+                <tr>
+                    <td class="center">
+                        <p style="font-size: 20px;">Face Tracking</p>
+                    </td>
+                    <td class="center">
+                        <label class="switch">
+                            <input type="checkbox" id ="FaceTracking" disabled>
+                            <span class="slider"></span>
+                        </label>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
@@ -73,7 +84,10 @@
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="https://muazkhan.com:9001/socket.io/socket.io.js"></script>
     <script src="https://www.webrtc-experiment.com/RecordRTC.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
     <script src="MotionDetector.js"></script>
+    <script src="FaceTracker.js"></script>
     <script src="RecordRTC.js"></script>
     <script src="RecordVideo.js"></script>
 </body>

@@ -4,7 +4,6 @@ var alpha = 0.5;
 var version = 0;
 var greyScale = false;
 
-var table = document.getElementById('secondtable');
 var canvas = document.getElementById('canvas');
 var canvasFinal = document.getElementById('canvasFinal');
 var video = document.getElementById('video-preview');
@@ -19,10 +18,10 @@ var intervalId;
 
 document.getElementById("MotionDetection").onclick = function () {
     if (document.getElementById("MotionDetection").checked) {
-        console.log("True");
-        intervalId = window.setInterval(showDetection, 32); 
+        document.getElementById('FaceTracking').disabled = true;
+        intervalId = window.setInterval(showDetection, 30); 
     } else {
-        console.log("False");
+        document.getElementById('FaceTracking').disabled = false;
         window.clearInterval(intervalId);
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         ctxFinal.clearRect(0, 0, canvasWidth, canvasHeight);

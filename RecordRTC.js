@@ -168,6 +168,7 @@ connection.onstream = function(event) {
 	console.log("checker2");
     document.getElementById('startRecord').disabled = false;
     document.getElementById('MotionDetection').disabled = false;
+    document.getElementById('FaceTracking').disabled = false;
 	console.log(event.stream.getTracks().getSettings());
 };
 

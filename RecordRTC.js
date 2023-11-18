@@ -118,6 +118,7 @@ connection.onstream = function(event) {
 
     if (event.type === 'local') {
         videoPreview.muted = true;
+        alert('Your boardcast id is: ' + connection.userid);
     }
 
     if (connection.isInitiator == false && event.type === 'remote') {
@@ -164,6 +165,7 @@ connection.onstream = function(event) {
     localStorage.setItem(connection.socketMessageEvent, connection.sessionid);
 	console.log("checker2");
     document.getElementById('startRecord').disabled = false;
+    document.getElementById('MotionDetection').disabled = false;
 	console.log(event.stream.getTracks().getSettings());
 };
 
@@ -207,48 +209,6 @@ document.getElementById('open-or-join').onclick = function() {
         });
     });
 };
-
-// document.getElementById('startRecord').onclick = function(){
-
-//     var broadcastId = document.getElementById('broadcast-id').value;
-//     // e.type == 'remote' || 'local'
-//     connection.streams[broadcastId].startRecording({
-//         video: true
-//     });
-
-//     // record 10 sec audio/video
-//     var recordingInterval = 10 * 10000;
-
-//     setTimeout(function () {
-//         connection.streams[broadcastId].stopRecording(function (blob) { 
-//             var mediaElement = document.createElement('video');
-//             mediaElement.src = URL.createObjectURL(blob.video); 
-//             document.documentElement.appendChild(h2); 
-//         });
-//     }, recordingInterval)
-// };
-
-// document.getElementById('startRecord').onclick = function(){
-//    // console.log("test");
-//     repeatedlyRecordStream(videoPreview.srcObject);
-// }
-
-// document.getElementById("stopRecord").addEventListener('click', stoprecord);
-
-// function stoprecord(){
-//    // console.log("test");
-//    connection.currentRecorder.stopRecording();    
-//    console.log("recorder" + connection.currentRecorder);
-//    console.log("get blob " + connection.currentRecorder.getBlob());
-
-// }
-
-// document.getElementById('displayRecord').onclick = function(){
-//     var mediaElement = document.createElement('video'); 
-//     mediaElement.src = URL.createObjectURL(connection.currentRecorder.getBlob());   
-// 	mediaElement.play();
-// 	console.log(connection.currentRecorder.blob)
-// }
 
 connection.onstreamended = function() {};
 
@@ -341,6 +301,5 @@ txtBroadcastId.onkeyup = txtBroadcastId.oninput = txtBroadcastId.onpaste = funct
 
 connection.onNumberOfBroadcastViewersUpdated = function(event) {
     if (!connection.isInitiator) return;
-
     document.getElementById('broadcast-viewers-counter').innerHTML = 'Number of broadcast viewers: <b>' + event.numberOfBroadcastViewers + '</b>';
 };

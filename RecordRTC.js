@@ -29,10 +29,10 @@ connection.maxRelayLimitPerUser = 5;
 connection.autoCloseEntireSession = true;
 
 // by default, socket.io server is assumed to be deployed on your own URL
-connection.socketURL = '/';
+connection.socketURL = 'wss://free.blr2.piesocket.com/v3/1?api_key=PBcNJma2ik20LvGAwI9LWYOetLJq3KbqABNYTPls&notify_self=1';
 
 // comment-out below line if you do not have your own socket.io server
- connection.socketURL = 'https://muazkhan.com:9001/';
+// connection.socketURL = 'https://muazkhan.com:9001/';
 
 connection.socketMessageEvent = 'scalable-media-broadcast-demo';
 

@@ -32,20 +32,28 @@
                 <tr>
                     <td colspan="2">
                         <p style="font-size: 24px;">Your room id:</p><br>
-                        <input type="text" id="broadcast-id" value="Enter Room ID" autocorrect=off autocapitalize=off class = "input">
+                        <input type="text" id="room-id" value="Enter Room ID" autocorrect=off autocapitalize=off class = "input">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="center">
+                        <button id="open-room" class="function" style="font-size: 24px;" disabled>Open Broadcast</button>
+                    </td>
+                    <td class="center">
+                        <button id="join-room" class="function" style="font-size: 24px;" disabled>Join Broadcast</button>
                     </td>
                 </tr>
                 <tr>
                     <td class="center" colspan="2">
-                        <button id="open-or-join" class="function" style="font-size: 24px;" disabled>Auto Open / Join Broadcast</button>
+                        <button id="open-or-join-room" class="function" style="font-size: 24px;" disabled>Auto Open / Join Broadcast</button>
                     </td>
                 </tr>
                 <tr>
                     <td class="center">
-                        <button id="startRecord" class="startRecord" style="font-size: 24px;" disabled>Start Recording</button>
+                        <button id="startRecord" class="function" style="font-size: 24px;" disabled>Start Recording</button>
                     </td>
                     <td class="center">
-                        <button id="stopRecord" class="stopRecord" style="font-size: 24px;" disabled>Stop Recording</button>
+                        <button id="stopRecord" class="function" style="font-size: 24px;" disabled>Stop Recording</button>
                     </td>
                 </tr>
                 <tr>
@@ -80,14 +88,18 @@
             </td>
         </tr>
     </table>
-    <script src="https://muazkhan.com:9001/dist/RTCMultiConnection.min.js"></script>
+    <script src="ExternalScripts/RTCMultiConnection.js"></script>
+    <!-- <script src="ExternalScripts/adapter-latest.js"></script> -->
+    <script src="https://muazkhan.com:9001/node_modules/webrtc-adapter/out/adapter.js"></script>
+    <script src="ExternalScripts/socket.io.js"></script>
+    <!-- <script src="https://muazkhan.com:9001/dist/RTCMultiConnection.min.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    <script src="https://muazkhan.com:9001/socket.io/socket.io.js"></script>
+    <script src="https://muazkhan.com:9001/socket.io/socket.io.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
     <script src="MotionDetector.js"></script>
     <script src="FaceTracker.js"></script>
-    <script src="RecordRTC.js"></script>
+    <script src="BroadcastRTC.js"></script>
     <script src="RecordVideo.js"></script>
 </body>
 </html>	

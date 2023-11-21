@@ -29,10 +29,10 @@ connection.maxRelayLimitPerUser = 5;
 connection.autoCloseEntireSession = true;
 
 // by default, socket.io server is assumed to be deployed on your own URL
-connection.socketURL = '/';
+connection.socketURL = 'http://113.28.134.15:7351/';
 
 // comment-out below line if you do not have your own socket.io server
-connection.socketURL = 'https://muazkhan.com:9001/';
+//connection.socketURL = 'https://muazkhan.com:9001/';
 
 connection.socketMessageEvent = 'scalable-media-broadcast-demo';
 

@@ -1,21 +1,40 @@
+function isEmpty(str) {
+    return !str.trim().length;
+}
 // ......................................................
 // .......................UI Code........................
 // ......................................................
 document.getElementById('open-room').onclick = function() {
+    var broadcastId = document.getElementById('room-id').value;
+    if (broadcastId.replace(/^\s+|\s+$/g, '').length <= 0) {
+        alert('Please enter broadcast-id');
+        document.getElementById('room-id').focus();
+        return;
+    }
+    connection.open(document.getElementById('room-id').value);
     disableInputButtons();
-    connection.open(document.getElementById('room-id').value, function() {
-        showRoomURL(connection.sessionid);
-    });
 };
 
 document.getElementById('join-room').onclick = function() {
-    disableInputButtons();
+    var broadcastId = document.getElementById('room-id').value;
+    if (broadcastId.replace(/^\s+|\s+$/g, '').length <= 0) {
+        alert('Please enter broadcast-id');
+        document.getElementById('room-id').focus();
+        return;
+    }
 
     connection.sdpConstraints.mandatory = {
         OfferToReceiveAudio: true,
         OfferToReceiveVideo: true
     };
-    connection.join(document.getElementById('room-id').value);
+    connection.join(document.getElementById('room-id').value, function(isRoomJoined, error) {
+        if (!isRoomJoined) {
+            alert("Room not found");
+            return;
+        } else {
+            disableInputButtons();
+        }
+    });
 };
 
 document.getElementById('open-or-join-room').onclick = function() {
@@ -23,7 +42,6 @@ document.getElementById('open-or-join-room').onclick = function() {
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExist, roomid) {
         if (isRoomExist === false && connection.isInitiator === true) {
             // if room doesn't exist, it means that current user will create the room
-            showRoomURL(roomid);
         }
 
         if(isRoomExist) {
@@ -87,7 +105,7 @@ connection.onstream = function(event) {
 
     if (event.type === 'local') {
         videoPreview.muted = true;
-        alert('Your boardcast id is: ' + connection.userid);
+        alert('Your boardcast id is: ' + document.getElementById('broadcast-id').value);
     }
 
     if (connection.isInitiator == false && event.type === 'remote') {
@@ -170,26 +188,6 @@ function disableInputButtons() {
     document.getElementById('open-room').disabled = true;
     document.getElementById('join-room').disabled = true;
     document.getElementById('room-id').disabled = true;
-}
-
-// ......................................................
-// ......................Handling Room-ID................
-// ......................................................
-
-function showRoomURL(roomid) {
-    var roomHashURL = '#' + roomid;
-    var roomQueryStringURL = '?roomid=' + roomid;
-
-    var html = '<h2>Unique URL for your room:</h2><br>';
-
-    html += 'Hash URL: <a href="' + roomHashURL + '" target="_blank">' + roomHashURL + '</a>';
-    html += '<br>';
-    html += 'QueryString URL: <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
-
-    // var roomURLsDiv = document.getElementById('room-urls');
-    // roomURLsDiv.innerHTML = html;
-
-    // roomURLsDiv.style.display = 'block';
 }
 
 (function() {

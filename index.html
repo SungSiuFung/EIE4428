@@ -31,7 +31,11 @@
             <table style = "width:100%;">
                 <tr>
                     <td colspan="2">
-                        <p style="font-size: 24px;">Your room id:</p><br>
+                        <div style="font-size: 24px;">Your room id:</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
                         <input type="text" id="room-id" value="Enter Room ID" autocorrect=off autocapitalize=off class = "input">
                     </td>
                 </tr>
@@ -81,16 +85,9 @@
             </table>
         </div>
     </div>
-    <table style = "width:100%;" id="secondtable">
-        <tr>
-            <td>
-                <p id = "broadcast-viewers-counter" style="font-size: 24px;">Number of broadcast viewers: <b>0</b></p>
-            </td>
-        </tr>
-    </table>
     <script src="ExternalScripts/RTCMultiConnection.js"></script>
-    <!-- <script src="ExternalScripts/adapter-latest.js"></script> -->
-    <script src="https://muazkhan.com:9001/node_modules/webrtc-adapter/out/adapter.js"></script>
+    <script src="ExternalScripts/adapter-latest.js"></script>
+    <!-- <script src="https://muazkhan.com:9001/node_modules/webrtc-adapter/out/adapter.js"></script> -->
     <script src="ExternalScripts/socket.io.js"></script>
     <!-- <script src="https://muazkhan.com:9001/dist/RTCMultiConnection.min.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>

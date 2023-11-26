@@ -13,12 +13,14 @@ document.getElementById("FaceTracking").onclick = async function () {
         model = await blazeface.load();
         intervalId = window.setInterval(detectFaces, 30);
         document.getElementById('FaceTracking').disabled = false;
+        banner.style.backgroundColor = "blue";
     } else {
         document.getElementById('MotionDetection').disabled = false;
         window.clearInterval(intervalId);
         ctxFinal.clearRect(0, 0, canvasWidth, canvasHeight);
         canvasFinal.width = 0;
         canvasFinal.height = 0;
+        banner.style.backgroundColor = "black";
     }
 }
 

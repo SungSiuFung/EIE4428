@@ -19,7 +19,8 @@ var intervalId;
 document.getElementById("MotionDetection").onclick = function () {
     if (document.getElementById("MotionDetection").checked) {
         document.getElementById('FaceTracking').disabled = true;
-        intervalId = window.setInterval(showDetection, 30); 
+        intervalId = window.setInterval(showDetection, 30);
+        banner.style.backgroundColor = "grey";
     } else {
         document.getElementById('FaceTracking').disabled = false;
         window.clearInterval(intervalId);
@@ -29,6 +30,7 @@ document.getElementById("MotionDetection").onclick = function () {
         canvas.height = 0;
         canvasFinal.width = 0;
         canvasFinal.height = 0;
+        banner.style.backgroundColor = "black";
     }
 }
 

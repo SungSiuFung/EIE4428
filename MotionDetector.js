@@ -51,23 +51,23 @@ function showDetection() {
     var length = imgData.data.length;
     var x = 0;
     while (x < length) {
-    if (!greyScale) {
-        // Alpha blending formula: out = (alpha * new) + (1 - alpha) * old.
-        imgData.data[x] = alpha * (255 - imgData.data[x]) + ((1-alpha) * imgDataPrev[version].data[x]);
-        imgData.data[x + 1] = alpha * (255 - imgData.data[x+1]) + ((1-alpha) * imgDataPrev[version].data[x + 1]);
-        imgData.data[x + 2] = alpha * (255 - imgData.data[x+2]) + ((1-alpha) * imgDataPrev[version].data[x + 2]);
-        imgData.data[x + 3] = 255;
-    } else {
-        // GreyScale.
-        var av = (imgData.data[x] + imgData.data[x + 1] + imgData.data[x + 2]) / 3;
-        var av2 = (imgDataPrev[version].data[x] + imgDataPrev[version].data[x + 1] + imgDataPrev[version].data[x + 2]) / 3;
-        var blended = alpha * (255 - av) + ((1-alpha) * av2);
-        imgData.data[x] = blended;
-        imgData.data[x + 1] = blended;
-        imgData.data[x + 2] = blended;
-        imgData.data[x + 3] = 255;
-    }
-    x += 4; 
+        if (!greyScale) {
+            // Alpha blending formula: out = (alpha * new) + (1 - alpha) * old.
+            imgData.data[x] = alpha * (255 - imgData.data[x]) + ((1-alpha) * imgDataPrev[version].data[x]);
+            imgData.data[x + 1] = alpha * (255 - imgData.data[x+1]) + ((1-alpha) * imgDataPrev[version].data[x + 1]);
+            imgData.data[x + 2] = alpha * (255 - imgData.data[x+2]) + ((1-alpha) * imgDataPrev[version].data[x + 2]);
+            imgData.data[x + 3] = 255;
+        } else {
+            // GreyScale.
+            var av = (imgData.data[x] + imgData.data[x + 1] + imgData.data[x + 2]) / 3;
+            var av2 = (imgDataPrev[version].data[x] + imgDataPrev[version].data[x + 1] + imgDataPrev[version].data[x + 2]) / 3;
+            var blended = alpha * (255 - av) + ((1-alpha) * av2);
+            imgData.data[x] = blended;
+            imgData.data[x + 1] = blended;
+            imgData.data[x + 2] = blended;
+            imgData.data[x + 3] = 255;
+        }
+        x += 4; 
     }
     ctxFinal.putImageData(imgData, 0, 0);
 }

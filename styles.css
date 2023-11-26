@@ -36,6 +36,11 @@ td.btn {
     font-size:20pt;
 }
 
+.select {
+    width: 100%;
+    font-size:20pt;
+}
+
 button.function {
     width: 100%;
     height: 60px;

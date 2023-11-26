@@ -151,9 +151,6 @@ connection.onstream = function(event) {
     // to keep room-id in cache
     localStorage.setItem(connection.socketMessageEvent, connection.sessionid);
 	console.log("checker2");
-    document.getElementById('startRecord').disabled = false;
-    document.getElementById('MotionDetection').disabled = false;
-    document.getElementById('FaceTracking').disabled = false;
 };
 
 connection.onstreamended = function(event) {
@@ -188,6 +185,10 @@ function disableInputButtons() {
     document.getElementById('open-room').disabled = true;
     document.getElementById('join-room').disabled = true;
     document.getElementById('room-id').disabled = true;
+    document.getElementById('startRecord').disabled = false;
+    document.getElementById('MotionDetection').disabled = false;
+    document.getElementById('FaceTracking').disabled = false;
+    document.getElementById('format').disabled = false;
 }
 
 (function() {

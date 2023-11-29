@@ -59,6 +59,12 @@ document.getElementById('open-or-join-room').onclick = function() {
 
 var connection = new RTCMultiConnection();
 
+// Specify the codec of streaming video
+connection.codecs.video = 'VP9';
+connection.preferVP9 = true;
+console.log("Check for codecs");
+console.log(connection.codecs.video);
+
 connection.socketURL = 'https://muazkhan.com:9001/';
 
 connection.socketMessageEvent = 'video-broadcast-demo';

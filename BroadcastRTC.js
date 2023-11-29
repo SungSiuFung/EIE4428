@@ -189,6 +189,7 @@ function disableInputButtons() {
     document.getElementById('MotionDetection').disabled = false;
     document.getElementById('FaceTracking').disabled = false;
     document.getElementById('format').disabled = false;
+    document.getElementById('VisualizeAudio').disabled = false;
 }
 
 (function() {

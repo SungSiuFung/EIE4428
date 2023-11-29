@@ -114,6 +114,17 @@
     <script src="ExternalScripts/RTCMultiConnection.js"></script>
     <script src="ExternalScripts/adapter-latest.js"></script>
     <script src="ExternalScripts/socket.io.js"></script>
+    <script>
+        var enableRecordings = true;
+
+        var connection = new RTCMultiConnection();
+
+        // Specify the codec of streaming video
+        connection.codecs.video = 'VP9';
+        connection.preferVP9 = true;
+        console.log("Check for codecs");
+        console.log(connection.codecs.video);
+    </script>
     <!-- <script src="https://muazkhan.com:9001/node_modules/webrtc-adapter/out/adapter.js"></script> -->
     <!-- <script src="https://muazkhan.com:9001/dist/RTCMultiConnection.min.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
@@ -125,5 +136,6 @@
     <script src="BroadcastRTC.js"></script>
     <script src="RecordVideo.js"></script>
     <script src="VisualizedAudio.js"></script>
+    <script src="Codec.js"></script>
 </body>
 </html>	

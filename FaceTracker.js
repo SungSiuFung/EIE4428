@@ -1,22 +1,22 @@
 let model;
-// var video = document.getElementById('video-preview');
-// var canvasFinal = document.getElementById('canvasFinal');
-// var ctxFinal = canvasFinal.getContext('2d');
-// var canvasHeight;
-// var canvasWidth;
-// var intervalId;
+var video = document.getElementById('video-preview');
+var canvasFinal = document.getElementById('canvasFinal');
+var ctxFinal = canvasFinal.getContext('2d');
+var canvasHeight;
+var canvasWidth;
+var TrackerintervalId;
 
 document.getElementById("FaceTracking").onclick = async function () {
     if (document.getElementById("FaceTracking").checked) {
         document.getElementById('MotionDetection').disabled = true;
         document.getElementById('FaceTracking').disabled = true;
         model = await blazeface.load();
-        intervalId = window.setInterval(detectFaces, 30);
+        TrackerintervalId = window.setInterval(detectFaces, 30);
         document.getElementById('FaceTracking').disabled = false;
         banner.style.backgroundColor = "blue";
     } else {
         document.getElementById('MotionDetection').disabled = false;
-        window.clearInterval(intervalId);
+        window.clearInterval(TrackerintervalId);
         ctxFinal.clearRect(0, 0, canvasWidth, canvasHeight);
         canvasFinal.width = 0;
         canvasFinal.height = 0;

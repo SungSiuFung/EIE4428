@@ -14,16 +14,16 @@ var imgData = null;
 var imgDataPrev = [];
 var canvasHeight;
 var canvasWidth;
-var intervalId;
+var MotionDetectionintervalId;
 
 document.getElementById("MotionDetection").onclick = function () {
     if (document.getElementById("MotionDetection").checked) {
         document.getElementById('FaceTracking').disabled = true;
-        intervalId = window.setInterval(showDetection, 30);
+        MotionDetectionintervalId = window.setInterval(showDetection, 30);
         banner.style.backgroundColor = "grey";
     } else {
         document.getElementById('FaceTracking').disabled = false;
-        window.clearInterval(intervalId);
+        window.clearInterval(MotionDetectionintervalId);
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         ctxFinal.clearRect(0, 0, canvasWidth, canvasHeight);
         canvas.width = 0;
@@ -73,7 +73,3 @@ function showDetection() {
     }
     ctxFinal.putImageData(imgData, 0, 0);
 }
-
-
-    
-

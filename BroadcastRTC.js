@@ -196,6 +196,7 @@ function disableInputButtons() {
     document.getElementById('FaceTracking').disabled = false;
     document.getElementById('format').disabled = false;
     document.getElementById('VisualizeAudio').disabled = false;
+    document.getElementById('ShareScreen').disabled = false;
 }
 
 (function() {

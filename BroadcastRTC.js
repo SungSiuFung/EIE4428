@@ -56,7 +56,8 @@ document.getElementById('open-or-join-room').onclick = function() {
 // ......................................................
 // ..................RTCMultiConnection Code.............
 // ......................................................
-
+let localScreenTracks;
+let sharingScreen = false;
 var connection = new RTCMultiConnection();
 
 // Specify the codec of streaming video
